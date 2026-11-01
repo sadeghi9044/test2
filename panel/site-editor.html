@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ویرایش سایت | سایت‌ساز</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="../vendor/vazirmatn/vazirmatn.css" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/pro.css">
+<script src="../js/theme.js" defer></script>
+<style>
+  .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); gap: 8px; margin-bottom: 18px; }
+  .palette-btn { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 10px; border: 1px solid rgba(128,128,128,0.2); background: rgba(128,128,128,0.04); color: inherit; cursor: pointer; font-family: inherit; font-size: 0.76rem; transition: 0.2s; }
+  .palette-btn:hover { border-color: var(--primary, #8b5cf6); transform: translateY(-1px); }
+  .palette-dots { display: flex; gap: 3px; }
+  .palette-dots span { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.15); }
+  .item-badge { display: inline-block; font-size: 0.68rem; padding: 2px 7px; border-radius: 6px; background: rgba(139,92,246,0.12); color: #8b5cf6; margin-right: 6px; }
+  .item-badge.muted { background: rgba(239,68,68,0.12); color: #ef4444; }
+  .product-item.is-hidden { opacity: 0.5; }
+  .product-item-actions { display: flex; gap: 4px; align-items: center; }
+  .product-item-actions button { padding: 4px 6px; font-size: 0.8rem; cursor: pointer; border-radius: 6px; border: none; background: rgba(128,128,128,0.1); color: inherit; }
+  .product-item-actions button:hover { background: rgba(128,128,128,0.22); }
+  .ps-badge { position: absolute; top: 8px; right: 8px; background: var(--s, #ec4899); color: #fff; font-size: 0.65rem; padding: 2px 8px; border-radius: 99px; font-weight: bold; }
+  .ps-old-price { text-decoration: line-through; opacity: 0.55; font-size: 0.72rem; margin-left: 6px; }
+  .ps-meta-tags { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0; font-size: 0.68rem; opacity: 0.85; }
+  .ps-meta-tags span { background: rgba(128,128,128,0.12); padding: 2px 6px; border-radius: 4px; }
+  .ps-socials { display: flex; justify-content: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+  .ps-socials a { text-decoration: none; font-size: 0.75rem; padding: 5px 12px; border-radius: 99px; background: var(--p, #8b5cf6); color: #fff; opacity: 0.92; }
+  .ps-cat-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 12px; }
+  .ps-cat-tab { padding: 4px 12px; border-radius: 99px; font-size: 0.72rem; border: 1px solid rgba(128,128,128,0.25); background: transparent; color: var(--pt); cursor: pointer; white-space: nowrap; }
+  .ps-cat-tab.active { background: var(--p); color: #fff; border-color: var(--p); }
+</style>
+</head>
+<body>
+
+<div class="dash-layout">
+
+  <aside class="dash-sidebar">
+    <div class="dash-brand">✏️ ویرایشگر حرفه‌ای</div>
+
+    <div class="dash-user-mini">
+      <div class="avatar" id="siteAvatar">🌐</div>
+      <div class="info">
+        <div class="name" id="sideSiteName">—</div>
+        <div class="id" id="sideSiteUrl">—</div>
+      </div>
+    </div>
+
+    <nav class="dash-nav">
+      <a class="active" data-target="templates"><span class="icon">🎨</span> انتخاب قالب</a>
+      <a data-target="branding"><span class="icon">🏷️</span> برندینگ</a>
+      <a data-target="colors"><span class="icon">🌈</span> پالت و رنگ‌ها</a>
+      <a data-target="hero"><span class="icon">📝</span> بخش اصلی (Hero)</a>
+      <a data-target="products" id="productsNavLink"><span class="icon">🛍️</span> <span id="productsNavText">آیتم‌ها</span></a>
+      <a data-target="features" id="featuresNavLink"><span class="icon">⭐</span> ویژگی‌ها و مزایا</a>
+      <a data-target="contact"><span class="icon">📞</span> تماس و شبکه‌ها</a>
+      <a data-target="seo"><span class="icon">🔍</span> تنظیمات سئو</a>
+    </nav>
+
+    <a href="dashboard.html" class="btn btn-ghost" style="margin-top:16px;justify-content:center;text-align:center;font-size:0.82rem;padding:10px;">
+      ← بازگشت به پنل
+    </a>
+  </aside>
+
+  <main class="dash-main">
+
+    <header class="dash-header">
+      <div>
+        <h1 style="font-size:1.2rem;">ویرایش سایت</h1>
+        <div style="color:var(--muted);font-size:0.78rem;margin-top:4px;" id="headerSubdomain">—</div>
+      </div>
+      <div class="dash-header-actions">
+        <button class="btn btn-danger" id="resetBtn" style="padding:8px 14px;font-size:0.82rem;">↺ بازنشانی</button>
+        <button class="btn btn-primary" id="saveBtn" style="padding:8px 18px;font-size:0.82rem;">💾 ذخیره تغییرات</button>
+      </div>
+    </header>
+
+    <div class="editor-layout">
+
+      <div class="editor-forms" id="editorFormsContainer">
+
+        <!-- TEMPLATES -->
+        <section class="editor-section" id="templates">
+          <h2>🎨 انتخاب قالب</h2>
+          <p class="editor-desc">قالب متناسب با کسب‌وکار خود را انتخاب کنید؛ فیلدهای مدیریت محتوا بر اساس قالب تنظیم می‌شوند.</p>
+
+          <div class="template-picker-grid" id="templatePicker">
+            <button type="button" class="tpl-card" data-template="business">
+              <div class="tpl-card-preview business">💼</div>
+              <div class="label">شرکتی و خدماتی</div>
+            </button>
+            <button type="button" class="tpl-card" data-template="shop">
+              <div class="tpl-card-preview shop">🛍️</div>
+              <div class="label">فروشگاه آنلاین</div>
+            </button>
+            <button type="button" class="tpl-card" data-template="portfolio">
+              <div class="tpl-card-preview portfolio">🎨</div>
+              <div class="label">پورتفولیو و شخصی</div>
+            </button>
+            <button type="button" class="tpl-card" data-template="blog">
+              <div class="tpl-card-preview blog">📝</div>
+              <div class="label">وبلاگ و مجله</div>
+            </button>
+            <button type="button" class="tpl-card" data-template="restaurant">
+              <div class="tpl-card-preview restaurant">🍽️</div>
+              <div class="label">رستوران و کافه</div>
+            </button>
+            <button type="button" class="tpl-card" data-template="realestate">
+              <div class="tpl-card-preview realestate">🏠</div>
+              <div class="label">مشاور املاک</div>
+            </button>
+          </div>
+        </section>
+
+        <!-- BRANDING -->
+        <section class="editor-section" id="branding">
+          <h2>🏷️ برندینگ و هدر</h2>
+          <p class="editor-desc">نام، لوگو و شعار برند خود را تنظیم کنید</p>
+
+          <div class="editor-row">
+            <div class="editor-field">
+              <label>نام سایت</label>
+              <input type="text" data-key="siteName">
+            </div>
+            <div class="editor-field">
+              <label>متن لوگو</label>
+              <input type="text" data-key="logoText">
+            </div>
+          </div>
+
+          <div class="editor-field">
+            <label>تصویر لوگو (اختیاری — جایگزین متن لوگو می‌شود)</label>
+            <div class="editor-upload-row">
+              <input type="text" data-key="logoImage" placeholder="آدرس تصویر (URL) یا انتخاب فایل">
+              <input type="file" accept="image/*" data-upload="logoImage">
+            </div>
+            <img class="editor-img-preview hidden" data-preview="logoImage" alt="پیش‌نمایش لوگو">
+          </div>
+
+          <div class="editor-field">
+            <label>شعار کوتاه (Tagline - نمایش در بالای صفحه)</label>
+            <input type="text" data-key="tagline" placeholder="مثلاً: ارسال رایگان برای خریدهای بالای ۵۰۰ هزار تومان">
+          </div>
+        </section>
+
+        <!-- COLORS -->
+        <section class="editor-section" id="colors">
+          <h2>🌈 پالت‌های آماده و رنگ‌بندی</h2>
+          <p class="editor-desc">یک پالت استاندارد انتخاب کنید یا رنگ‌ها را به دلخواه تغییر دهید</p>
+
+          <div class="palette-grid" id="palettePicker">
+            <button type="button" class="palette-btn" data-p="#8b5cf6" data-s="#ec4899" data-bg="#ffffff" data-txt="#111827">
+              <div class="palette-dots"><span style="background:#8b5cf6"></span><span style="background:#ec4899"></span><span style="background:#ffffff"></span></div>
+              <span>بنفش مدرن</span>
+            </button>
+            <button type="button" class="palette-btn" data-p="#2563eb" data-s="#0ea5e9" data-bg="#f8fafc" data-txt="#0f172a">
+              <div class="palette-dots"><span style="background:#2563eb"></span><span style="background:#0ea5e9"></span><span style="background:#f8fafc"></span></div>
+              <span>آبی شرکتی</span>
+            </button>
+            <button type="button" class="palette-btn" data-p="#10b981" data-s="#f59e0b" data-bg="#0f172a" data-txt="#f8fafc">
+              <div class="palette-dots"><span style="background:#10b981"></span><span style="background:#f59e0b"></span><span style="background:#0f172a"></span></div>
+              <span>تیره لوکس</span>
+            </button>
+            <button type="button" class="palette-btn" data-p="#ea580c" data-s="#eab308" data-bg="#fffbeb" data-txt="#292524">
+              <div class="palette-dots"><span style="background:#ea580c"></span><span style="background:#eab308"></span><span style="background:#fffbeb"></span></div>
+              <span>گرم و کافه‌ای</span>
+            </button>
+            <button type="button" class="palette-btn" data-p="#059669" data-s="#14b8a6" data-bg="#ffffff" data-txt="#1f2937">
+              <div class="palette-dots"><span style="background:#059669"></span><span style="background:#14b8a6"></span><span style="background:#ffffff"></span></div>
+              <span>سبز طبیعت</span>
+            </button>
+            <button type="button" class="palette-btn" data-p="#e11d48" data-s="#fb7185" data-bg="#18181b" data-txt="#f4f4f5">
+              <div class="palette-dots"><span style="background:#e11d48"></span><span style="background:#fb7185"></span><span style="background:#18181b"></span></div>
+              <span>نئون شب</span>
+            </button>
+          </div>
+
+          <div class="editor-row">
+            <div class="editor-field">
+              <label>رنگ اصلی</label>
+              <div class="editor-color-field">
+                <input type="color" data-color-key="primaryColor">
+                <input type="text" data-key="primaryColor" maxlength="7">
+              </div>
+            </div>
+            <div class="editor-field">
+              <label>رنگ ثانویه</label>
+              <div class="editor-color-field">
+                <input type="color" data-color-key="secondaryColor">
+                <input type="text" data-key="secondaryColor" maxlength="7">
+              </div>
+            </div>
+          </div>
+
+          <div class="editor-row">
+            <div class="editor-field">
+              <label>پس‌زمینه سایت</label>
+              <div class="editor-color-field">
+                <input type="color" data-color-key="bgColor">
+                <input type="text" data-key="bgColor" maxlength="7">
+              </div>
+            </div>
+            <div class="editor-field">
+              <label>رنگ متن</label>
+              <div class="editor-color-field">
+                <input type="color" data-color-key="textColor">
+                <input type="text" data-key="textColor" maxlength="7">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- HERO -->
+        <section class="editor-section" id="hero">
+          <h2>📝 بخش اول صفحه (Hero)</h2>
+          <p class="editor-desc">مهم‌ترین پیام و دکمه فراخوان (CTA) سایت که بازدیدکننده در بدو ورود می‌بیند</p>
+
+          <div class="editor-field">
+            <label>عنوان اصلی</label>
+            <input type="text" data-key="heroTitle">
+          </div>
+
+          <div class="editor-field">
+            <label>توضیح زیر عنوان</label>
+            <textarea data-key="heroDesc" rows="3"></textarea>
+          </div>
+
+          <div class="editor-row">
+            <div class="editor-field">
+              <label>متن دکمه اصلی</label>
+              <input type="text" data-key="heroBtnText">
+            </div>
+            <div class="editor-field">
+              <label>لینک یا عملکرد دکمه</label>
+              <input type="text" data-key="heroBtnLink" style="direction:ltr;text-align:left;" placeholder="#items یا https://...">
+            </div>
+          </div>
+
+          <div class="editor-field">
+            <label>تصویر پس‌زمینه (اختیاری)</label>
+            <div class="editor-upload-row">
+              <input type="text" data-key="heroBgImage" placeholder="آدرس تصویر یا انتخاب فایل">
+              <input type="file" accept="image/*" data-upload="heroBgImage">
+            </div>
+            <img class="editor-img-preview hidden" data-preview="heroBgImage" alt="پیش‌نمایش پس‌زمینه">
+          </div>
+        </section>
+
+        <!-- DYNAMIC ITEMS (PRODUCTS / MENU / REALESTATE / PORTFOLIO / BLOG) -->
+        <section class="editor-section" id="products" style="display:none;">
+          <h2><span id="productsTitleIcon">🛍️</span> <span id="productsTitleLabel">محصولات</span></h2>
+          <p class="editor-desc" id="productsDescLabel">آیتم‌های خود را با جزئیات کامل مدیریت کنید</p>
+
+          <div id="productFormWrap" class="product-form-wrap" style="display:none;">
+            <form id="productForm">
+              <input type="hidden" id="pf-id">
+
+              <div class="editor-row">
+                <div class="editor-field">
+                  <label id="lbl-pf-name">نام آیتم</label>
+                  <input type="text" id="pf-name" required>
+                </div>
+                <div class="editor-field" id="wrap-pf-category">
+                  <label id="lbl-pf-category">دسته‌بندی</label>
+                  <input type="text" id="pf-category" placeholder="مثلاً: ویژه، جدید...">
+                </div>
+              </div>
+
+              <div class="editor-row" id="wrap-pf-pricing">
+                <div class="editor-field">
+                  <label id="lbl-pf-price">قیمت (تومان)</label>
+                  <input type="number" id="pf-price" min="0" step="any">
+                </div>
+                <div class="editor-field" id="wrap-pf-oldprice">
+                  <label id="lbl-pf-oldprice">قیمت قبل از تخفیف (اختیاری)</label>
+                  <input type="number" id="pf-oldPrice" min="0" step="any" placeholder="برای نمایش تخفیف">
+                </div>
+              </div>
+
+              <div class="editor-row" id="wrap-pf-realestate" style="display:none;">
+                <div class="editor-field">
+                  <label>متراژ (متر مربع)</label>
+                  <input type="text" id="pf-area" placeholder="مثلاً: ۱۲۵ متر">
+                </div>
+                <div class="editor-field">
+                  <label>تعداد اتاق / مشخصات</label>
+                  <input type="text" id="pf-rooms" placeholder="مثلاً: ۳ خواب، فول امکانات">
+                </div>
+              </div>
+
+              <div class="editor-row" id="wrap-pf-meta" style="display:none;">
+                <div class="editor-field">
+                  <label id="lbl-pf-meta1">تکنولوژی‌ها / برچسب‌ها</label>
+                  <input type="text" id="pf-tags" placeholder="مثلاً: React, UI/UX">
+                </div>
+                <div class="editor-field">
+                  <label id="lbl-pf-meta2">لینک مشاهده یا تاریخ</label>
+                  <input type="text" id="pf-link" placeholder="https://... یا ۱۴۰۵/۰۱/۲۰">
+                </div>
+              </div>
+
+              <div class="editor-field">
+                <label id="lbl-pf-desc">توضیحات</label>
+                <textarea id="pf-desc" rows="2" placeholder="توضیحات تکمیلی..."></textarea>
+              </div>
+
+              <div class="editor-row">
+                <div class="editor-field">
+                  <label>برچسب ویژه روی کارت (اختیاری)</label>
+                  <input type="text" id="pf-badge" placeholder="مثلاً: پرفروش، فوری، ۲۰٪ تخفیف">
+                </div>
+                <div class="editor-field" id="wrap-pf-stock">
+                  <label>وضعیت نمایش / موجودی</label>
+                  <select id="pf-inStock" style="width:100%;padding:10px;border-radius:8px;background:inherit;color:inherit;border:1px solid rgba(128,128,128,0.25);">
+                    <option value="true">موجود و قابل سفارش</option>
+                    <option value="false">ناموجود / واگذار شده</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="editor-field">
+                <label>تصویر (اختیاری)</label>
+                <div class="editor-upload-row">
+                  <input type="text" id="pf-image" placeholder="آدرس تصویر یا انتخاب فایل">
+                  <input type="file" accept="image/*" id="pf-image-file">
+                </div>
+              </div>
+
+              <div style="display:flex;gap:8px;margin-top:12px;">
+                <button type="submit" class="btn btn-primary" style="flex:1;padding:10px;">💾 ثبت آیتم</button>
+                <button type="button" class="btn btn-ghost" id="cancelProductBtn" style="padding:10px 18px;">لغو</button>
+              </div>
+            </form>
+          </div>
+
+          <div id="productsList" class="products-list"></div>
+
+          <button type="button" class="btn btn-primary full" id="addProductBtn">➕ افزودن آیتم جدید</button>
+        </section>
+
+        <!-- DYNAMIC FEATURES -->
+        <section class="editor-section" id="features">
+          <h2>⭐ ویژگی‌ها و مزایای رقابتی</h2>
+          <p class="editor-desc">مزایا و خدمات اصلی خود را اضافه کنید (در تمام قالب‌ها قابل نمایش است)</p>
+
+          <div id="featureFormWrap" class="product-form-wrap" style="display:none;margin-bottom:14px;">
+            <form id="featureForm">
+              <input type="hidden" id="ff-id">
+              <div class="editor-row">
+                <div class="editor-field" style="max-width:110px;">
+                  <label>آیکون (ایموجی)</label>
+                  <input type="text" id="ff-icon" maxlength="8" style="text-align:center;font-size:1.3rem;" placeholder="⚡" required>
+                </div>
+                <div class="editor-field" style="flex:1;">
+                  <label>عنوان ویژگی</label>
+                  <input type="text" id="ff-title" placeholder="مثلاً: پشتیبانی ۲۴ ساعته" required>
+                </div>
+              </div>
+              <div class="editor-field">
+                <label>توضیح کوتاه</label>
+                <input type="text" id="ff-desc" placeholder="پاسخگویی سریع در تمام ایام هفته">
+              </div>
+              <div style="display:flex;gap:8px;margin-top:8px;">
+                <button type="submit" class="btn btn-primary" style="flex:1;padding:8px;">💾 ثبت ویژگی</button>
+                <button type="button" class="btn btn-ghost" id="cancelFeatureBtn" style="padding:8px 16px;">لغو</button>
+              </div>
+            </form>
+          </div>
+
+          <div id="featuresList" class="products-list"></div>
+          <button type="button" class="btn btn-ghost full" id="addFeatureBtn" style="border:1px dashed rgba(128,128,128,0.3);padding:10px;">➕ افزودن ویژگی جدید</button>
+        </section>
+
+        <!-- CONTACT & SOCIALS -->
+        <section class="editor-section" id="contact">
+          <h2>📞 اطلاعات تماس و شبکه‌های اجتماعی</h2>
+          <p class="editor-desc">راه‌های ارتباطی که در فوتر و بخش تماس سایت نمایش داده می‌شوند</p>
+
+          <div class="editor-row">
+            <div class="editor-field">
+              <label>تلفن تماس</label>
+              <input type="text" data-key="contactPhone" placeholder="۰۲۱-۱۲۳۴۵۶۷۸">
+            </div>
+            <div class="editor-field">
+              <label>ایمیل</label>
+              <input type="email" data-key="contactEmail" style="direction:ltr;text-align:left;">
+            </div>
+          </div>
+
+          <div class="editor-row">
+            <div class="editor-field">
+              <label>آیدی یا لینک اینستاگرام</label>
+              <input type="text" data-key="socialInstagram" style="direction:ltr;text-align:left;" placeholder="https://instagram.com/yourpage">
+            </div>
+            <div class="editor-field">
+              <label>لینک تلگرام</label>
+              <input type="text" data-key="socialTelegram" style="direction:ltr;text-align:left;" placeholder="https://t.me/yourchannel">
+            </div>
+          </div>
+
+          <div class="editor-field">
+            <label>شماره واتس‌اپ (با کد کشور، بدون +)</label>
+            <input type="text" data-key="socialWhatsapp" style="direction:ltr;text-align:left;" placeholder="989120000000">
+          </div>
+
+          <div class="editor-field">
+            <label>آدرس فیزیکی</label>
+            <textarea data-key="contactAddress" rows="2"></textarea>
+          </div>
+        </section>
+
+        <!-- SEO -->
+        <section class="editor-section" id="seo">
+          <h2>🔍 سئو و موتور جستجو</h2>
+          <p class="editor-desc">تنظیم نحوه نمایش سایت در نتایج گوگل</p>
+
+          <div class="editor-field">
+            <label>عنوان صفحه (Title - حداکثر ۶۰ کاراکتر)</label>
+            <input type="text" data-key="seoTitle" maxlength="60">
+          </div>
+
+          <div class="editor-field">
+            <label>توضیحات سئو (Meta Description - حداکثر ۱۶۰ کاراکتر)</label>
+            <textarea data-key="seoDescription" rows="3" maxlength="160"></textarea>
+          </div>
+
+          <div class="editor-field">
+            <label>کلمات کلیدی (با کاما جدا کنید)</label>
+            <input type="text" data-key="seoKeywords">
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Preview -->
+      <div class="editor-preview-wrap">
+        <div class="preview-device-toggle">
+          <button class="active" data-device="desktop">🖥️ دسکتاپ</button>
+          <button data-device="mobile">📱 موبایل</button>
+        </div>
+        <div class="editor-preview-frame" id="previewFrame">
+          <div class="editor-preview-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="url" id="previewUrl"></span>
+          </div>
+          <div class="editor-preview-content" id="previewContent"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<div class="dash-toast" id="dashToast"></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script type="text/plain" id="editorMain">
+/* ============ SITE (از سرور) ============ */
+const SITE = __BOOT.site;
+const SITE_ID = SITE.id;
+const READ_ONLY = !!__BOOT.readOnly;
+const BASE_DOMAIN = window.BASE_DOMAIN || 'yoursite.com';
+
+/* ============ EDITOR DATA ============ */
+const DEFAULTS = {
+  template: SITE.template || 'business',
+  siteName: SITE.name,
+  logoText: '◆ ' + SITE.name,
+  logoImage: '',
+  tagline: 'به سایت ما خوش آمدید',
+  primaryColor: '#8b5cf6',
+  secondaryColor: '#ec4899',
+  bgColor: '#ffffff',
+  textColor: '#111827',
+  heroTitle: 'به ' + SITE.name + ' خوش آمدید',
+  heroDesc: SITE.description || 'ما با بهره‌گیری از تجربه و تخصص، بهترین خدمات و محصولات را به شما ارائه می‌دهیم.',
+  heroBtnText: 'مشاهده خدمات',
+  heroBtnLink: '#items',
+  heroBgImage: '',
+  contactEmail: 'hello@' + SITE.subdomain + '.com',
+  contactPhone: '۰۲۱-۱۲۳۴۵۶۷۸',
+  contactAddress: 'تهران، ایران',
+  socialInstagram: '',
+  socialTelegram: '',
+  socialWhatsapp: '',
+  seoTitle: SITE.name + ' | وب‌سایت رسمی',
+  seoDescription: SITE.description || 'وب‌سایت رسمی ' + SITE.name,
+  seoKeywords: SITE.name,
+  products: [],
+  features: [
+    { id: 'F-1', icon: '⚡', title: 'سریع و آسان', desc: 'تحویل و خدمات در کمترین زمان ممکن' },
+    { id: 'F-2', icon: '✨', title: 'کیفیت تضمین‌شده', desc: 'ارائه بالاترین استانداردهای کیفی' },
+    { id: 'F-3', icon: '💚', title: 'پشتیبانی دائمی', desc: 'همراه شما در تمام مراحل خرید و خدمات' }
+  ]
+};
+
+function deepClone(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+function normalizeLegacyData(raw) {
+  const data = Object.assign(deepClone(DEFAULTS), raw ? deepClone(raw) : {});
+  if (!Array.isArray(raw?.features) && (raw?.feat1Title || raw?.feat2Title || raw?.feat3Title)) {
+    data.features = [];
+    [1, 2, 3].forEach(n => {
+      if (raw[`feat${n}Title`]) {
+        data.features.push({
+          id: 'F-' + n,
+          icon: raw[`feat${n}Icon`] || '⭐',
+          title: raw[`feat${n}Title`],
+          desc: raw[`feat${n}Desc`] || ''
+        });
+      }
+    });
+  }
+  if (!Array.isArray(data.products)) data.products = [];
+  if (!Array.isArray(data.features)) data.features = deepClone(DEFAULTS.features);
+  return data;
+}
+
+let EDITOR = normalizeLegacyData(__BOOT.editor);
+let activeCategoryFilter = 'all';
+
+/* ============ HEADER INFO ============ */
+document.title = 'ویرایش: ' + SITE.name;
+const iconMap = { business: '💼', shop: '🛍️', portfolio: '🎨', blog: '📝', restaurant: '🍽️', realestate: '🏠' };
+document.getElementById('siteAvatar').textContent = iconMap[EDITOR.template] || '🌐';
+document.getElementById('sideSiteName').textContent = SITE.name;
+document.getElementById('sideSiteUrl').textContent = SITE.subdomain + '.' + BASE_DOMAIN;
+document.getElementById('headerSubdomain').textContent = SITE.subdomain + '.' + BASE_DOMAIN;
+document.getElementById('previewUrl').textContent = SITE.subdomain + '.' + BASE_DOMAIN;
+
+/* ============ TEMPLATE CONFIGURATIONS ============ */
+const TEMPLATE_CONFIG = {
+  shop: {
+    icon: '🛍️', navText: 'محصولات', title: 'مدیریت محصولات فروشگاه',
+    desc: 'محصولات را با قیمت، تخفیف، دسته‌بندی و وضعیت موجودی وارد کنید.',
+    addLabel: '➕ افزودن محصول جدید', emptyText: 'هنوز محصولی اضافه نکرده‌اید.',
+    nameLabel: 'نام محصول', catLabel: 'دسته‌بندی (مثلاً: کالای دیجیتال)',
+    showPricing: true, showOldPrice: true, showRealEstate: false, showMeta: false, showStock: true
+  },
+  restaurant: {
+    icon: '🍽️', navText: 'منوی رستوران', title: 'آیتم‌های منو (غذا و نوشیدنی)',
+    desc: 'غذاها، پیش‌غذاها و نوشیدنی‌ها را به تفکیک دسته‌بندی وارد کنید.',
+    addLabel: '➕ افزودن آیتم به منو', emptyText: 'منوی شما خالی است. اولین آیتم را اضافه کنید!',
+    nameLabel: 'نام غذا یا نوشیدنی', catLabel: 'دسته منو (مثلاً: پیتزا، نوشیدنی سرد)',
+    showPricing: true, showOldPrice: true, showRealEstate: false, showMeta: false, showStock: true
+  },
+  realestate: {
+    icon: '🏠', navText: 'فایل‌های املاک', title: 'لیست املاک و فایل‌ها',
+    desc: 'مشخصات کامل ملک، متراژ، تعداد خواب و قیمت را وارد کنید.',
+    addLabel: '➕ ثبت ملک جدید', emptyText: 'هنوز فایلی ثبت نشده است.',
+    nameLabel: 'عنوان ملک (مثلاً: آپارتمان شمال شهر)', catLabel: 'نوع معامله (فروش / رهن و اجاره)',
+    showPricing: true, showOldPrice: false, showRealEstate: true, showMeta: false, showStock: true
+  },
+  portfolio: {
+    icon: '🎨', navText: 'نمونه‌کارها', title: 'پروژه‌ها و نمونه‌کارها',
+    desc: 'پروژه‌های انجام‌شده، مهارت‌های به‌کاررفته و لینک مشاهده آن‌ها را ثبت کنید.',
+    addLabel: '➕ افزودن نمونه‌کار جدید', emptyText: 'هنوز نمونه‌کاری ثبت نکرده‌اید.',
+    nameLabel: 'عنوان پروژه', catLabel: 'حوزه پروژه (مثلاً: طراحی وب، گرافیک)',
+    showPricing: false, showOldPrice: false, showRealEstate: false, showMeta: true, showStock: false,
+    meta1Label: 'تکنولوژی‌ها و ابزارها', meta2Label: 'لینک پروژه (اختیاری)'
+  },
+  blog: {
+    icon: '📝', navText: 'مقالات وبلاگ', title: 'مدیریت پست‌ها و مقالات',
+    desc: 'مقالات، اخبار و مطالب آموزشی سایت خود را منتشر کنید.',
+    addLabel: '➕ نوشتن مقاله جدید', emptyText: 'هنوز مقاله‌ای منتشر نشده است.',
+    nameLabel: 'عنوان مقاله', catLabel: 'موضوع مقاله (مثلاً: آموزشی، اخبار)',
+    showPricing: false, showOldPrice: false, showRealEstate: false, showMeta: true, showStock: false,
+    meta1Label: 'نویسنده یا زمان مطالعه', meta2Label: 'تاریخ انتشار (مثلاً: ۱۴۰۵/۰۲/۱۰)'
+  }
+};
+
+function updateTemplateUI() {
+  const tpl = EDITOR.template;
+  const cfg = TEMPLATE_CONFIG[tpl];
+  const hasItems = !!cfg;
+
+  document.getElementById('siteAvatar').textContent = iconMap[tpl] || '🌐';
+  document.getElementById('productsNavLink').style.display = hasItems ? 'flex' : 'none';
+  document.getElementById('products').style.display = hasItems ? 'block' : 'none';
+
+  if (hasItems) {
+    document.getElementById('productsNavText').textContent = cfg.navText;
+    document.getElementById('productsTitleIcon').textContent = cfg.icon;
+    document.getElementById('productsTitleLabel').textContent = cfg.title;
+    document.getElementById('productsDescLabel').textContent = cfg.desc;
+    document.getElementById('addProductBtn').textContent = cfg.addLabel;
+
+    document.getElementById('lbl-pf-name').textContent = cfg.nameLabel;
+    document.getElementById('lbl-pf-category').textContent = cfg.catLabel;
+    document.getElementById('wrap-pf-pricing').style.display = cfg.showPricing ? 'grid' : 'none';
+    document.getElementById('pf-price').required = cfg.showPricing;
+    document.getElementById('wrap-pf-oldprice').style.display = cfg.showOldPrice ? 'block' : 'none';
+    document.getElementById('wrap-pf-realestate').style.display = cfg.showRealEstate ? 'grid' : 'none';
+    document.getElementById('wrap-pf-meta').style.display = cfg.showMeta ? 'grid' : 'none';
+    document.getElementById('wrap-pf-stock').style.display = cfg.showStock ? 'block' : 'none';
+
+    if (cfg.showMeta) {
+      document.getElementById('lbl-pf-meta1').textContent = cfg.meta1Label;
+      document.getElementById('lbl-pf-meta2').textContent = cfg.meta2Label;
+    }
+  } else {
+    const activeLink = document.querySelector('.dash-nav a.active');
+    if (activeLink && activeLink.style.display === 'none') {
+      document.querySelectorAll('.dash-nav a').forEach(a => a.classList.remove('active'));
+      document.querySelector('.dash-nav a[data-target="templates"]').classList.add('active');
+    }
+  }
+
+  document.querySelectorAll('.tpl-card').forEach(c => {
+    c.classList.toggle('active', c.dataset.template === tpl);
+  });
+}
+
+/* ============ POPULATE FORM ============ */
+function populateForm() {
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    el.value = EDITOR[key] != null ? EDITOR[key] : '';
+  });
+  document.querySelectorAll('[data-color-key]').forEach(picker => {
+    const key = picker.dataset.colorKey;
+    if (EDITOR[key]) picker.value = EDITOR[key];
+  });
+  document.querySelectorAll('[data-preview]').forEach(img => {
+    const key = img.dataset.preview;
+    if (EDITOR[key] && String(EDITOR[key]).trim()) {
+      img.src = EDITOR[key];
+      img.classList.remove('hidden');
+    } else {
+      img.classList.add('hidden');
+    }
+  });
+}
+
+/* ============ TEMPLATE & PALETTE PICKERS ============ */
+document.querySelectorAll('.tpl-card').forEach(card => {
+  card.addEventListener('click', () => {
+    EDITOR.template = card.dataset.template;
+    activeCategoryFilter = 'all';
+    document.getElementById('productFormWrap').style.display = 'none';
+    updateTemplateUI();
+    renderProductsList();
+    renderPreview();
+    showToast('قالب تغییر کرد و فیلدهای تخصصی فعال شدند.');
+  });
+});
+
+document.querySelectorAll('.palette-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    EDITOR.primaryColor = btn.dataset.p;
+    EDITOR.secondaryColor = btn.dataset.s;
+    EDITOR.bgColor = btn.dataset.bg;
+    EDITOR.textColor = btn.dataset.txt;
+    populateForm();
+    renderPreview();
+    showToast('پالت رنگی اعمال شد');
+  });
+});
+
+/* ============ COLOR PICKER ============ */
+document.querySelectorAll('[data-color-key]').forEach(picker => {
+  const key = picker.dataset.colorKey;
+  const textInput = document.querySelector('[data-key="' + key + '"]');
+  if (!textInput) return;
+  picker.addEventListener('input', () => {
+    textInput.value = picker.value;
+    EDITOR[key] = picker.value;
+    renderPreview();
+  });
+  textInput.addEventListener('input', () => {
+    if (/^#[0-9a-fA-F]{6}$/.test(textInput.value)) {
+      picker.value = textInput.value;
+      EDITOR[key] = textInput.value;
+      renderPreview();
+    }
+  });
+});
+
+/* ============ IMAGE UPLOAD ============ */
+const MAX_IMG_MB = 5;
+async function uploadImageFile(file) {
+  if (!file) return null;
+  if (file.size > MAX_IMG_MB * 1024 * 1024) { showToast('حجم تصویر باید کمتر از ' + MAX_IMG_MB + ' مگابایت باشد', true); return null; }
+  if (!/^image\/(png|jpe?g|gif|webp)$/.test(file.type)) { showToast('فقط PNG، JPG، GIF یا WEBP مجاز است', true); return null; }
+  try {
+    showToast('در حال آپلود…');
+    const r = await API.upload('/api/upload', file);
+    return r.url;
+  } catch (err) { showToast(err.message, true); return null; }
+}
+
+document.querySelectorAll('[data-upload]').forEach(fileInput => {
+  fileInput.addEventListener('change', async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const url = await uploadImageFile(file);
+    fileInput.value = '';
+    if (!url) return;
+    const key = fileInput.dataset.upload;
+    EDITOR[key] = url;
+    const textInput = document.querySelector('[data-key="' + key + '"]');
+    if (textInput) textInput.value = url;
+    const preview = document.querySelector('[data-preview="' + key + '"]');
+    if (preview) { preview.src = url; preview.classList.remove('hidden'); }
+    renderPreview();
+    showToast('تصویر بارگذاری شد');
+  });
+});
+
+/* ============ LIVE FORM UPDATE ============ */
+document.querySelectorAll('[data-key]').forEach(el => {
+  el.addEventListener('input', () => {
+    const key = el.dataset.key;
+    EDITOR[key] = el.value;
+    const preview = document.querySelector('[data-preview="' + key + '"]');
+    if (preview) {
+      if (el.value.trim()) {
+        preview.src = el.value.trim();
+        preview.classList.remove('hidden');
+      } else {
+        preview.classList.add('hidden');
+      }
+    }
+    renderPreview();
+  });
+});
+
+/* ============ ITEMS (PRODUCTS / PORTFOLIO / BLOG): LIST & ACTIONS ============ */
+function renderProductsList() {
+  const list = document.getElementById('productsList');
+  const cfg = TEMPLATE_CONFIG[EDITOR.template] || TEMPLATE_CONFIG.shop;
+
+  if (!EDITOR.products || EDITOR.products.length === 0) {
+    list.innerHTML = `<div class="empty-products">${cfg.emptyText}</div>`;
+    return;
+  }
+
+  list.innerHTML = EDITOR.products.map((p, idx) => {
+    const subInfo = cfg.showPricing ? `${fmtMoney(p.price || 0)} تومان` : (p.tags || p.link || '');
+    const catBadge = p.category ? `<span class="item-badge">${escapeHTML(p.category)}</span>` : '';
+    const stockBadge = (cfg.showStock && p.inStock === false) ? `<span class="item-badge muted">ناموجود</span>` : '';
+    return `
+      <div class="product-item ${p.hidden ? 'is-hidden' : ''}">
+        <div class="product-item-img">
+          ${p.image ? `<img src="${escapeHTML(p.image)}" alt="">` : cfg.icon}
+        </div>
+        <div class="product-item-info">
+          <div class="product-item-name">${escapeHTML(p.name)} ${catBadge} ${stockBadge}</div>
+          <div class="product-item-price">${escapeHTML(subInfo)}</div>
+        </div>
+        <div class="product-item-actions">
+          <button type="button" data-act="up" data-idx="${idx}" title="انتقال به بالا" ${idx === 0 ? 'disabled' : ''}>↑</button>
+          <button type="button" data-act="down" data-idx="${idx}" title="انتقال به پایین" ${idx === EDITOR.products.length - 1 ? 'disabled' : ''}>↓</button>
+          <button type="button" data-act="toggle" data-id="${escapeHTML(p.id)}" title="${p.hidden ? 'نمایش در سایت' : 'مخفی کردن موقت'}">${p.hidden ? '👁️‍🗨️' : '👁️'}</button>
+          <button type="button" data-act="edit" data-id="${escapeHTML(p.id)}" title="ویرایش">✏️</button>
+          <button type="button" class="del" data-act="del" data-id="${escapeHTML(p.id)}" title="حذف">🗑️</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+document.getElementById('productsList').addEventListener('click', ev => {
+  const b = ev.target.closest('button[data-act]');
+  if (!b) return;
+  const act = b.dataset.act;
+  const id = b.dataset.id;
+  const idx = parseInt(b.dataset.idx, 10);
+
+  if (act === 'edit') window.editProduct(id);
+  else if (act === 'del') window.deleteProduct(id);
+  else if (act === 'toggle') {
+    const item = EDITOR.products.find(x => x.id === id);
+    if (item) { item.hidden = !item.hidden; renderProductsList(); renderPreview(); }
+  } else if (act === 'up' && idx > 0) {
+    [EDITOR.products[idx - 1], EDITOR.products[idx]] = [EDITOR.products[idx], EDITOR.products[idx - 1]];
+    renderProductsList(); renderPreview();
+  } else if (act === 'down' && idx < EDITOR.products.length - 1) {
+    [EDITOR.products[idx + 1], EDITOR.products[idx]] = [EDITOR.products[idx], EDITOR.products[idx + 1]];
+    renderProductsList(); renderPreview();
+  }
+});
+
+const formWrap = document.getElementById('productFormWrap');
+const productForm = document.getElementById('productForm');
+
+document.getElementById('addProductBtn').addEventListener('click', () => {
+  productForm.reset();
+  document.getElementById('pf-id').value = '';
+  document.getElementById('pf-inStock').value = 'true';
+  formWrap.style.display = 'block';
+  document.getElementById('pf-name').focus();
+});
+
+document.getElementById('cancelProductBtn').addEventListener('click', () => {
+  formWrap.style.display = 'none';
+});
+
+document.getElementById('pf-image-file').addEventListener('change', async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const url = await uploadImageFile(file);
+  e.target.value = '';
+  if (url) { document.getElementById('pf-image').value = url; showToast('تصویر بارگذاری شد'); }
+});
+
+productForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const cfg = TEMPLATE_CONFIG[EDITOR.template] || TEMPLATE_CONFIG.shop;
+  const id = document.getElementById('pf-id').value;
+  const name = document.getElementById('pf-name').value.trim();
+  const category = document.getElementById('pf-category').value.trim();
+  const price = cfg.showPricing ? Number(document.getElementById('pf-price').value || 0) : 0;
+  const oldPrice = cfg.showOldPrice ? Number(document.getElementById('pf-oldPrice').value || 0) : 0;
+  const area = document.getElementById('pf-area').value.trim();
+  const rooms = document.getElementById('pf-rooms').value.trim();
+  const tags = document.getElementById('pf-tags').value.trim();
+  const link = document.getElementById('pf-link').value.trim();
+  const desc = document.getElementById('pf-desc').value.trim();
+  const badge = document.getElementById('pf-badge').value.trim();
+  const inStock = document.getElementById('pf-inStock').value !== 'false';
+  const image = document.getElementById('pf-image').value.trim();
+
+  if (!name || (cfg.showPricing && (isNaN(price) || price < 0))) {
+    showToast('لطفاً فیلدهای اجباری را به درستی وارد کنید', true);
+    return;
+  }
+
+  const itemData = { name, category, price, oldPrice, area, rooms, tags, link, desc, badge, inStock, image };
+
+  if (id) {
+    const idx = EDITOR.products.findIndex(p => p.id === id);
+    if (idx >= 0) EDITOR.products[idx] = { ...EDITOR.products[idx], ...itemData };
+  } else {
+    EDITOR.products.push({ id: 'P-' + Date.now(), hidden: false, ...itemData });
+  }
+
+  formWrap.style.display = 'none';
+  renderProductsList();
+  renderPreview();
+  showToast('✓ آیتم ثبت شد. برای ذخیره نهایی روی دکمه ذخیره بالا کلیک کنید.');
+});
+
+window.editProduct = function (id) {
+  const p = EDITOR.products.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('pf-id').value = p.id;
+  document.getElementById('pf-name').value = p.name || '';
+  document.getElementById('pf-category').value = p.category || '';
+  document.getElementById('pf-price').value = p.price != null ? p.price : '';
+  document.getElementById('pf-oldPrice').value = p.oldPrice || '';
+  document.getElementById('pf-area').value = p.area || '';
+  document.getElementById('pf-rooms').value = p.rooms || '';
+  document.getElementById('pf-tags').value = p.tags || '';
+  document.getElementById('pf-link').value = p.link || '';
+  document.getElementById('pf-desc').value = p.desc || '';
+  document.getElementById('pf-badge').value = p.badge || '';
+  document.getElementById('pf-inStock').value = p.inStock === false ? 'false' : 'true';
+  document.getElementById('pf-image').value = p.image || '';
+  formWrap.style.display = 'block';
+  formWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+
+window.deleteProduct = function (id) {
+  if (!confirm('این مورد حذف شود؟')) return;
+  EDITOR.products = EDITOR.products.filter(p => p.id !== id);
+  renderProductsList();
+  renderPreview();
+  showToast('حذف شد');
+};
+
+/* ============ DYNAMIC FEATURES MANAGEMENT ============ */
+const featFormWrap = document.getElementById('featureFormWrap');
+const featForm = document.getElementById('featureForm');
+
+function renderFeaturesList() {
+  const list = document.getElementById('featuresList');
+  if (!EDITOR.features || EDITOR.features.length === 0) {
+    list.innerHTML = `<div class="empty-products">ویژگی ثبت نشده است.</div>`;
+    return;
+  }
+  list.innerHTML = EDITOR.features.map((f, idx) => `
+    <div class="product-item">
+      <div class="product-item-img" style="font-size:1.3rem;">${escapeHTML(f.icon || '⭐')}</div>
+      <div class="product-item-info">
+        <div class="product-item-name">${escapeHTML(f.title)}</div>
+        <div class="product-item-price">${escapeHTML(f.desc || '')}</div>
+      </div>
+      <div class="product-item-actions">
+        <button type="button" data-fact="edit" data-id="${escapeHTML(f.id)}" title="ویرایش">✏️</button>
+        <button type="button" class="del" data-fact="del" data-id="${escapeHTML(f.id)}" title="حذف">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('featuresList').addEventListener('click', ev => {
+  const b = ev.target.closest('button[data-fact]');
+  if (!b) return;
+  const id = b.dataset.id;
+  if (b.dataset.fact === 'del') {
+    EDITOR.features = EDITOR.features.filter(f => f.id !== id);
+    renderFeaturesList(); renderPreview();
+  } else if (b.dataset.fact === 'edit') {
+    const f = EDITOR.features.find(x => x.id === id);
+    if (!f) return;
+    document.getElementById('ff-id').value = f.id;
+    document.getElementById('ff-icon').value = f.icon || '';
+    document.getElementById('ff-title').value = f.title || '';
+    document.getElementById('ff-desc').value = f.desc || '';
+    featFormWrap.style.display = 'block';
+  }
+});
+
+document.getElementById('addFeatureBtn').addEventListener('click', () => {
+  featForm.reset();
+  document.getElementById('ff-id').value = '';
+  document.getElementById('ff-icon').value = '✨';
+  featFormWrap.style.display = 'block';
+  document.getElementById('ff-title').focus();
+});
+
+document.getElementById('cancelFeatureBtn').addEventListener('click', () => {
+  featFormWrap.style.display = 'none';
+});
+
+featForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const id = document.getElementById('ff-id').value;
+  const icon = document.getElementById('ff-icon').value.trim() || '⭐';
+  const title = document.getElementById('ff-title').value.trim();
+  const desc = document.getElementById('ff-desc').value.trim();
+  if (!title) return;
+
+  if (id) {
+    const idx = EDITOR.features.findIndex(x => x.id === id);
+    if (idx >= 0) EDITOR.features[idx] = { id, icon, title, desc };
+  } else {
+    EDITOR.features.push({ id: 'F-' + Date.now(), icon, title, desc });
+  }
+  featFormWrap.style.display = 'none';
+  renderFeaturesList();
+  renderPreview();
+});
+
+/* ============ RENDER LIVE PREVIEW ============ */
+function renderPreview() {
+  const el = document.getElementById('previewContent');
+  el.style.setProperty('--p', EDITOR.primaryColor);
+  el.style.setProperty('--s', EDITOR.secondaryColor);
+  el.style.setProperty('--pb', EDITOR.bgColor);
+  el.style.setProperty('--pt', EDITOR.textColor);
+
+  const heroBg = EDITOR.heroBgImage ?
+    `background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('${escapeHTML(String(EDITOR.heroBgImage).replace(/['"\\()\s]/g, ''))}'); background-size: cover; background-position: center; color: #ffffff;` : '';
+
+  const logoHTML = EDITOR.logoImage ?
+    `<img src="${escapeHTML(EDITOR.logoImage)}" alt="logo">` :
+    escapeHTML(EDITOR.logoText) || 'لوگو';
+
+  const taglineHTML = EDITOR.tagline ?
+    `<div style="background:var(--p);color:#fff;text-align:center;font-size:0.7rem;padding:5px 10px;">${escapeHTML(EDITOR.tagline)}</div>` : '';
+
+  let html = `
+    ${taglineHTML}
+    <div class="ps-header">
+      <div class="ps-logo">${logoHTML}</div>
+      <div class="ps-nav"><span>خانه</span><span>خدمات</span><span>تماس</span></div>
+    </div>
+    <div class="ps-hero" style="${heroBg}">
+      <h1 style="${EDITOR.heroBgImage ? 'color:#fff' : ''}">${escapeHTML(EDITOR.heroTitle) || 'عنوان سایت'}</h1>
+      <p style="${EDITOR.heroBgImage ? 'color:rgba(255,255,255,0.9)' : ''}">${escapeHTML(EDITOR.heroDesc) || ''}</p>
+      <button class="ps-cta">${escapeHTML(EDITOR.heroBtnText) || 'شروع کنید'}</button>
+    </div>
+  `;
+
+  const tpl = EDITOR.template;
+  if (tpl === 'shop' || tpl === 'restaurant' || tpl === 'realestate') {
+    html += renderProductsSection();
+  } else if (tpl === 'portfolio') {
+    html += renderPortfolioSection();
+  } else if (tpl === 'blog') {
+    html += renderBlogSection();
+  }
+
+  if (EDITOR.features && EDITOR.features.length > 0) {
+    html += renderFeaturesSection();
+  }
+
+  const socials = [];
+  if (EDITOR.socialInstagram) socials.push(`<a href="#">📸 اینستاگرام</a>`);
+  if (EDITOR.socialTelegram) socials.push(`<a href="#">✈️ تلگرام</a>`);
+  if (EDITOR.socialWhatsapp) socials.push(`<a href="#">💬 واتس‌اپ</a>`);
+
+  html += `
+    <div class="ps-contact">
+      <h2>ارتباط با ما</h2>
+      ${EDITOR.contactPhone ? `<div class="ps-contact-row">📱 ${escapeHTML(EDITOR.contactPhone)}</div>` : ''}
+      ${EDITOR.contactEmail ? `<div class="ps-contact-row">📧 ${escapeHTML(EDITOR.contactEmail)}</div>` : ''}
+      ${EDITOR.contactAddress ? `<div class="ps-contact-row">📍 ${escapeHTML(EDITOR.contactAddress)}</div>` : ''}
+      ${socials.length ? `<div class="ps-socials">${socials.join('')}</div>` : ''}
+    </div>
+    <div class="ps-footer">© ${new Date().getFullYear()} تمامی حقوق برای ${escapeHTML(EDITOR.siteName) || SITE.name} محفوظ است.</div>
+  `;
+
+  el.innerHTML = html;
+
+  el.querySelectorAll('.ps-cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      activeCategoryFilter = tab.dataset.cat;
+      renderPreview();
+    });
+  });
+}
+
+function getVisibleItems() {
+  return (EDITOR.products || []).filter(p => !p.hidden);
+}
+
+function renderCategoryTabs(items) {
+  const cats = [...new Set(items.map(i => i.category).filter(Boolean))];
+  if (cats.length === 0) return '';
+  return `
+    <div class="ps-cat-tabs">
+      <button type="button" class="ps-cat-tab ${activeCategoryFilter === 'all' ? 'active' : ''}" data-cat="all">همه</button>
+      ${cats.map(c => `<button type="button" class="ps-cat-tab ${activeCategoryFilter === c ? 'active' : ''}" data-cat="${escapeHTML(c)}">${escapeHTML(c)}</button>`).join('')}
+    </div>
+  `;
+}
+
+function renderProductsSection() {
+  const tpl = EDITOR.template;
+  const cfg = TEMPLATE_CONFIG[tpl] || TEMPLATE_CONFIG.shop;
+  const allVisible = getVisibleItems();
+
+  if (allVisible.length === 0) {
+    return `
+      <div class="ps-products" id="items">
+        <h2>${cfg.navText}</h2>
+        <div class="ps-products-grid">
+          <div class="ps-product no-products" style="grid-column:1/-1;">${cfg.icon} ${cfg.emptyText}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  const filtered = activeCategoryFilter === 'all' ? allVisible : allVisible.filter(p => p.category === activeCategoryFilter);
+
+  const cards = filtered.map(p => {
+    const isOut = p.inStock === false;
+    const badgeText = isOut ? 'ناموجود' : p.badge;
+    const realEstateMeta = (tpl === 'realestate' && (p.area || p.rooms)) ?
+      `<div class="ps-meta-tags">${p.area ? `<span>📐 ${escapeHTML(p.area)}</span>` : ''}${p.rooms ? `<span>🛏️ ${escapeHTML(p.rooms)}</span>` : ''}</div>` : '';
+
+    return `
+      <div class="ps-product" style="position:relative;${isOut ? 'opacity:0.65;' : ''}">
+        ${badgeText ? `<span class="ps-badge" style="${isOut ? 'background:#6b7280' : ''}">${escapeHTML(badgeText)}</span>` : ''}
+        <div class="ps-product-img">${p.image ? `<img src="${escapeHTML(p.image)}" alt="">` : cfg.icon}</div>
+        <div class="ps-product-body">
+          <h4>${escapeHTML(p.name)}</h4>
+          ${realEstateMeta}
+          <p>${escapeHTML(p.desc) || ''}</p>
+          <div class="price">
+            ${p.oldPrice > p.price ? `<span class="ps-old-price">${fmtMoney(p.oldPrice)}</span>` : ''}
+            <span>${p.price > 0 ? fmtMoney(p.price) + ' تومان' : 'تماس بگیرید'}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="ps-products" id="items">
+      <h2>${cfg.navText}</h2>
+      ${renderCategoryTabs(allVisible)}
+      <div class="ps-products-grid">${cards}</div>
+    </div>
+  `;
+}
+
+function renderPortfolioSection() {
+  const items = getVisibleItems();
+  if (items.length === 0) {
+    return `<div class="ps-products" style="text-align:center;opacity:0.7;font-size:0.8rem;">🎨 هنوز نمونه‌کاری اضافه نکرده‌اید</div>`;
+  }
+  const cards = items.map(p => `
+    <div class="ps-product" style="position:relative;">
+      ${p.badge ? `<span class="ps-badge">${escapeHTML(p.badge)}</span>` : ''}
+      <div class="ps-product-img">${p.image ? `<img src="${escapeHTML(p.image)}" alt="">` : '🎨'}</div>
+      <div class="ps-product-body">
+        <h4>${escapeHTML(p.name)}</h4>
+        <p>${escapeHTML(p.desc) || ''}</p>
+        ${p.tags ? `<div class="ps-meta-tags"><span>🛠️ ${escapeHTML(p.tags)}</span></div>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  return `
+    <div class="ps-products" id="items">
+      <h2>نمونه‌کارها و پروژه‌ها</h2>
+      <div class="ps-products-grid">${cards}</div>
+    </div>
+  `;
+}
+
+function renderBlogSection() {
+  const items = getVisibleItems();
+  const defaultArticles = [
+    { name: 'راهنمای شروع کسب‌وکار آنلاین', desc: 'مهم‌ترین نکاتی که پیش از راه‌اندازی سایت باید بدانید.', link: '۱۴۰۵/۰۱/۱۵', category: 'آموزشی' },
+    { name: 'چگونه فروش خود را ۲ برابر کنیم؟', desc: 'بررسی تکنیک‌های کاربردی بازاریابی و جذب مشتری وفادار.', link: '۱۴۰۵/۰۲/۰۱', category: 'بازاریابی' }
+  ];
+  const list = items.length > 0 ? items : defaultArticles;
+
+  return `
+    <div class="ps-products" id="items">
+      <h2>آخرین مقالات</h2>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        ${list.map(a => `
+          <div style="background:rgba(128,128,128,0.08);border:1px solid rgba(128,128,128,0.15);padding:12px;border-radius:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:0.8rem;font-weight:700;color:var(--pt);">${escapeHTML(a.name)}</span>
+              ${a.category ? `<span style="font-size:0.65rem;background:var(--p);color:#fff;padding:2px 7px;border-radius:99px;">${escapeHTML(a.category)}</span>` : ''}
+            </div>
+            <div style="font-size:0.72rem;color:var(--pt);opacity:0.8;margin-bottom:6px;">${escapeHTML(a.desc || '')}</div>
+            <div style="font-size:0.65rem;color:var(--pt);opacity:0.6;">${escapeHTML(a.tags ? a.tags + ' • ' : '')}${escapeHTML(a.link || '')}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderFeaturesSection() {
+  return `
+    <div class="ps-features">
+      ${EDITOR.features.map(f => `
+        <div class="ps-feat">
+          <div class="ps-feat-icon">${escapeHTML(f.icon) || '⭐'}</div>
+          <h3>${escapeHTML(f.title) || ''}</h3>
+          <p>${escapeHTML(f.desc) || ''}</p>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+/* ============ HELPERS ============ */
+function escapeHTML(str) {
+  if (!str) return '';
+  return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+}
+function fmtMoney(n) { return Math.floor(Number(n) || 0).toLocaleString('fa-IR'); }
+
+function showToast(msg, isError) {
+  const t = document.getElementById('dashToast');
+  t.textContent = msg;
+  t.classList.toggle('error', !!isError);
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+/* ============ SAVE & RESET ============ */
+const saveBtn = document.getElementById('saveBtn');
+saveBtn.addEventListener('click', () => {
+  if (READ_ONLY) { showToast('حالت مشاهده (ادمین): امکان ذخیره وجود ندارد.', true); return; }
+  saveBtn.disabled = true;
+  API.put('/api/sites/' + encodeURIComponent(SITE_ID), { editor: EDITOR }).then(r => {
+    SITE.name = r.site.name;
+    document.getElementById('sideSiteName').textContent = r.site.name;
+    showToast('✓ تغییرات با موفقیت ذخیره شد');
+  }).catch(e => showToast(e.message, true)).finally(() => { saveBtn.disabled = false; });
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (confirm('همه تغییرات به حالت پیش‌فرض بازگردد؟ (برای ثبت نهایی، دکمه‌ی ذخیره را بزنید)')) {
+    EDITOR = deepClone(DEFAULTS);
+    activeCategoryFilter = 'all';
+    populateForm();
+    updateTemplateUI();
+    renderProductsList();
+    renderFeaturesList();
+    renderPreview();
+    showToast('✓ بازنشانی انجام شد — برای ثبت نهایی ذخیره کنید');
+  }
+});
+
+/* ============ DEVICE TOGGLE & SIDEBAR NAV ============ */
+document.querySelectorAll('[data-device]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-device]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('previewFrame').classList.toggle('mobile', btn.dataset.device === 'mobile');
+  });
+});
+
+const navLinks = document.querySelectorAll('.dash-nav a');
+navLinks.forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.getElementById(a.dataset.target);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    navLinks.forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+
+function handleScrollSpy() {
+  document.querySelectorAll('.editor-section').forEach(sec => {
+    if (sec.style.display === 'none') return;
+    const r = sec.getBoundingClientRect();
+    if (r.top <= 180 && r.bottom > 180) {
+      navLinks.forEach(a => a.classList.toggle('active', a.dataset.target === sec.id));
+    }
+  });
+}
+window.addEventListener('scroll', handleScrollSpy, { passive: true });
+document.getElementById('editorFormsContainer').addEventListener('scroll', handleScrollSpy, { passive: true });
+
+/* ============ INIT ============ */
+populateForm();
+updateTemplateUI();
+renderProductsList();
+renderFeaturesList();
+renderPreview();
+</script>
+<script>
+Boot.run('editorMain', async function () {
+  const q = new URLSearchParams(location.search);
+  const id = q.get('id');
+  const admin = q.get('admin') === '1';
+  if (!id) { alert('شناسه سایت مشخص نیست'); throw Boot.redirect('dashboard.html'); }
+  try {
+    const r = await API.get((admin ? '/api/admin/sites/' : '/api/sites/') + encodeURIComponent(id));
+    return { site: r.site, editor: r.editor, readOnly: admin };
+  } catch (e) {
+    if (e.status === 401) throw Boot.redirect(admin ? '../admin/admin-login.html' : 'login.html?next=dashboard.html');
+    if (e.status === 404) { alert('این سایت پیدا نشد یا متعلق به شما نیست'); throw Boot.redirect(admin ? '../admin/admin.html' : 'dashboard.html'); }
+    throw e;
+  }
+});
+</script>
+</body>
+</html>
